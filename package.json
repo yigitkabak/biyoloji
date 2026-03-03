@@ -1,0 +1,20 @@
+{
+  "name": "biyo-erozyon-slayt-sitesi",
+  "version": "1.0.0",
+  "description": "Erozyon konusunu siyah-beyaz temalı 5 slaytlık web sunumu olarak anlatan statik site.",
+  "scripts": {
+    "start": "echo \"Bu proje statik bir HTML/CSS/JS sitesi; doğrudan index.html dosyasını tarayıcıda açabilirsiniz.\""
+  },
+  "keywords": [
+    "erozyon",
+    "biyoloji",
+    "eğitim",
+    "slayt",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
+

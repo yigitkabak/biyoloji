@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erozyonun Doğal Nedenleri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .wind-indicator {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .wind-bar {
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(200,180,100,0.8));
+      border-radius: 999px;
+      animation: wind-bar-pulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes wind-bar-pulse {
+      0% { opacity: 0.4; transform: scaleX(0.7); }
+      100% { opacity: 1; transform: scaleX(1); }
+    }
+    .hilltop-erode {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hill-shape {
+      position: absolute;
+      bottom: 0;
+      left: -5%;
+      width: 110%;
+      height: 80px;
+      background: linear-gradient(to top, #3a2a10 0%, #5a4020 60%, transparent 100%);
+      clip-path: polygon(0% 100%, 0% 60%, 15% 40%, 35% 55%, 50% 30%, 65% 50%, 80% 38%, 95% 52%, 100% 45%, 100% 100%);
+      animation: hill-erode 6s ease-in-out infinite alternate;
+    }
+    @keyframes hill-erode {
+      0% { clip-path: polygon(0% 100%, 0% 60%, 15% 40%, 35% 55%, 50% 30%, 65% 50%, 80% 38%, 95% 52%, 100% 45%, 100% 100%); }
+      100% { clip-path: polygon(0% 100%, 0% 65%, 15% 48%, 35% 60%, 50% 38%, 65% 56%, 80% 44%, 95% 57%, 100% 50%, 100% 100%); }
+    }
+  </style>
+</head>
+<body>
+<div class="site-wrapper">
+  <header class="site-header">
+  </header>
+
+  <main class="slider theme-natural" aria-live="polite" style="position:relative;">
+
+    <div id="windScene" style="position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;"></div>
+
+    <div class="wind-indicator">
+      <div class="wind-bar" style="width:80px;animation-delay:0s;"></div>
+      <div class="wind-bar" style="width:55px;animation-delay:0.3s;"></div>
+      <div class="wind-bar" style="width:70px;animation-delay:0.6s;"></div>
+      <div class="wind-bar" style="width:40px;animation-delay:0.9s;"></div>
+    </div>
+
+    <div class="hilltop-erode">
+      <div class="hill-shape"></div>
+    </div>
+
+    <section class="slide active" data-index="0" style="position:relative;z-index:2;">
+      <div class="slide-media">
+        <figure class="image-grid image-grid--intro">
+          <div class="image-tile" style="background-image:url('https://static1.squarespace.com/static/58910d716a4963f35f8da04d/589245266fd27ce6cd289846/589245726fd27ce6cd289bbb/1485981042043/Slope-3-copy.jpg?format=original');"></div>
+          <div class="image-tile" style="background-image:url('https://www.ekolojist.com/images/imgs1/erozyon-nasil-onlenir.jpg');"></div>
+          <div class="image-tile" style="background-image:url('https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638886464/EducationHub/photos/proof-of-a-landslide.jpg');"></div>
+        </figure>
+      </div>
+      <div class="slide-content">
+        <p class="eyebrow">2 / 5</p>
+        <h2>Doğal Nedenler</h2>
+        <p>Erozyonun ilk halkasında iklim, arazinin eğimi, toprağın yapısı ve üzerindeki bitki örtüsü gibi tamamen doğal etmenler vardır. Şiddetli yağış ve kuvvetli rüzgâr, korumasız toprağı adeta kazıyarak başka yerlere taşır.</p>
+        <ul class="key-list">
+          <li><strong>Şiddetli yağış</strong> yüzey akışını artırır — toprak darbelerle kopar.</li>
+          <li><strong>Dik yamaçlar</strong> toprağın tutunmasını zorlaştırır.</li>
+          <li><strong>Gevşek ve ince yapılı topraklar</strong> rüzgârla kolayca savrulan toprak haline gelir.</li>
+          <li><strong>Zayıf bitki örtüsü</strong> toprağı rüzgâr ve sudan koruyamaz.</li>
+        </ul>
+        <p>Bu koşullar bir araya geldiğinde, her yağmur damlası ve her esen rüzgâr milyonlarca yılda oluşan toprağı parça parça koparıp götürür.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="controls">
+      <a class="arrow-btn arrow-link" href="./insan-etkisi.html" aria-label="İnsan etkisi sayfasına geç">›</a>
+    </div>
+    <p class="footer-text">Yiğit KABAK</p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  const scene = document.getElementById('windScene');
+  if (!scene) return;
+
+  for (let i = 0; i < 20; i++) {
+    const line = document.createElement('div');
+    const top = 10 + Math.random() * 80;
+    const width = 60 + Math.random() * 140;
+    const dur = 1.2 + Math.random() * 1.8;
+    const delay = Math.random() * 4;
+    const thick = 1 + Math.random() * 2;
+    line.style.cssText = `
+      position:absolute;
+      top:${top}%;
+      left:0;
+      width:${width}px;
+      height:${thick}px;
+      border-radius:999px;
+      background:linear-gradient(to right,transparent,rgba(200,175,110,0.75),transparent);
+      animation:wind-blow ${dur}s ${delay}s linear infinite;
+    `;
+    scene.appendChild(line);
+  }
+
+  for (let i = 0; i < 55; i++) {
+    const grain = document.createElement('div');
+    const size = 2 + Math.random() * 5;
+    const startX = Math.random() * 40;
+    const startY = 20 + Math.random() * 70;
+    const dx1 = 20 + Math.random() * 40;
+    const dy1 = (Math.random() - 0.5) * 30;
+    const dx2 = 60 + Math.random() * 80;
+    const dy2 = (Math.random() - 0.5) * 50;
+    const dx3 = 120 + Math.random() * 100;
+    const dy3 = (Math.random() - 0.5) * 40;
+    const dx4 = 200 + Math.random() * 120;
+    const dur = 2 + Math.random() * 3;
+    const delay = Math.random() * 5;
+    const alpha = 0.5 + Math.random() * 0.5;
+    grain.style.cssText = `
+      position:absolute;
+      left:${startX}%;
+      top:${startY}%;
+      width:${size}px;
+      height:${size}px;
+      border-radius:50%;
+      background:rgba(${160 + Math.random()*40|0},${130 + Math.random()*30|0},${70 + Math.random()*30|0},${alpha});
+      --dx1:${dx1}px; --dy1:${dy1}px;
+      --dx2:${dx2}px; --dy2:${dy2}px;
+      --dx3:${dx3}px; --dy3:${dy3}px;
+      --dx4:${dx4}px;
+      animation:dust-swirl ${dur}s ${delay}s ease-in-out infinite;
+    `;
+    scene.appendChild(grain);
+  }
+})();
+</script>
+</body>
+</html>

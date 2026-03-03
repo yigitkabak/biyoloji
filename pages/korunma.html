@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erozyondan Korunma Yolları</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .growth-stage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .sprout-unit {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: bottom center;
+      animation: sprout-emerge ease-out forwards;
+      opacity: 0;
+    }
+    .s-stem {
+      width: 3px;
+      border-radius: 2px;
+      background: linear-gradient(to top, #1a6b30, #4dcb68);
+    }
+    .s-leaf-l {
+      position: absolute;
+      background: radial-gradient(ellipse at 30% 40%, #5ee076, #2a8c42);
+      border-radius: 50% 5% 50% 5%;
+      transform-origin: bottom right;
+      animation: leaf-unfurl-l ease-out forwards;
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    .s-leaf-r {
+      position: absolute;
+      background: radial-gradient(ellipse at 70% 40%, #5ee076, #2a8c42);
+      border-radius: 5% 50% 5% 50%;
+      transform-origin: bottom left;
+      animation: leaf-unfurl-r ease-out forwards;
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    @keyframes sprout-emerge {
+      0% { transform: scaleY(0.05) translateY(20px); opacity: 0; }
+      40% { opacity: 1; }
+      100% { transform: scaleY(1) translateY(0); opacity: 1; }
+    }
+    @keyframes leaf-unfurl-l {
+      0% { transform: scaleX(0) rotate(-40deg); opacity: 0; }
+      100% { transform: scaleX(1) rotate(-30deg); opacity: 1; }
+    }
+    @keyframes leaf-unfurl-r {
+      0% { transform: scaleX(0) rotate(40deg); opacity: 0; }
+      100% { transform: scaleX(1) rotate(30deg); opacity: 1; }
+    }
+    .water-drop-elem {
+      position: absolute;
+      width: 9px;
+      height: 13px;
+      background: radial-gradient(ellipse at 40% 30%, rgba(130,220,255,0.9), rgba(60,160,220,0.7));
+      clip-path: polygon(50% 0%, 100% 55%, 80% 100%, 20% 100%, 0% 55%);
+      animation: wdrop-fall ease-in infinite;
+    }
+    @keyframes wdrop-fall {
+      0% { transform: translateY(0); opacity: 0; }
+      15% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(var(--dd)); opacity: 0; }
+    }
+    .land-ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(80,200,140,0.45);
+      animation: lripple ease-out infinite;
+      transform: translate(-50%, -50%) scale(0);
+    }
+    @keyframes lripple {
+      0% { transform: translate(-50%,-50%) scale(0); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(1); width: 55px; height: 18px; opacity: 0; }
+    }
+    .ground-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 32px;
+      background: linear-gradient(to top, #0d3a18, #1a5c28);
+    }
+    .glow-pulse {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(50,180,80,0.12) 0%, transparent 65%);
+      animation: glow-breathe 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow-breathe {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="site-wrapper">
+  <header class="site-header">
+  </header>
+
+  <main class="slider theme-protect" aria-live="polite" style="position:relative;">
+
+    <div class="growth-stage" id="growthStage">
+      <div class="ground-strip"></div>
+      <div class="glow-pulse"></div>
+    </div>
+
+    <section class="slide active" data-index="0" style="position:relative;z-index:2;">
+      <div class="slide-media">
+        <figure class="image-grid image-grid--solutions">
+          <div class="image-tile" style="background-image:url('https://images.ctfassets.net/3s5io6mnxfqz/Hhw9RBWzbjS8iMUQWks2w/2aded5b6dabcd2cb9459320348da774d/terrace-farming.jpeg?w=1920');"></div>
+          <div class="image-tile" style="background-image:url('https://www.dairyglobal.net/app/uploads/2022/07/IMG_GrazingPastureLR.jpg');"></div>
+          <div class="image-tile" style="background-image:url('https://www.treehugger.com/thmb/KPxUOSaV4KV-DSJYapCbr8K8MrA%3D/1500x0/filters%3Ano_upscale%28%29%3Amax_bytes%28150000%29%3Astrip_icc%28%29/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2015__12__terrace-Chaing-mai-Province-affc64cf00ad4591b180bc71d65f8451.jpg');"></div>
+        </figure>
+      </div>
+      <div class="slide-content">
+        <p class="eyebrow">5 / 5</p>
+        <h2>Erozyondan Korunma</h2>
+        <p>Toprak kaybını yavaşlatmak ve durdurmak mümkündür. Her dikilen ağaç, korunan mera ve bilinçli tarım uygulaması toprağı yerinde tutar, geleceğin su ve gıda kaynaklarını güvence altına alır.</p>
+        <ol class="steps-list">
+          <li>Ormanların korunması ve ağaçlandırma çalışmaları</li>
+          <li>Meraların planlı ve dengeli otlatılması</li>
+          <li>Eğime dik sürüm, teraslama ve nadas alanlarının azaltılması</li>
+          <li>Toprak işleme yerine koruyucu tarım uygulamaları</li>
+          <li>Toplumda erozyon bilincinin artırılması</li>
+        </ol>
+        <p class="tagline">Her küçük önlem, geleceğin verimli toprakları için yeşil bir umut ışığıdır.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="controls">
+      <a class="arrow-btn arrow-link" href="./tesekkurler.html" aria-label="Teşekkürler sayfasına geç">
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </a>
+    </div>
+    <p class="footer-text">Yiğit KABAK</p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  const stage = document.getElementById('growthStage');
+  if (!stage) return;
+
+  const spots = [8, 16, 24, 33, 42, 51, 60, 69, 78, 87, 93];
+  const sizes = [70, 55, 90, 65, 80, 100, 60, 85, 75, 110, 58];
+  const delays = [0.2, 0.8, 1.4, 0.5, 1.9, 0.1, 2.3, 1.1, 2.8, 0.6, 1.7];
+
+  spots.forEach(function(left, i) {
+    const h = sizes[i];
+    const delay = delays[i];
+    const unit = document.createElement('div');
+    unit.className = 'sprout-unit';
+    unit.style.cssText = `left:${left}%;bottom:30px;animation-delay:${delay}s;animation-duration:${0.8 + Math.random()*0.5}s;`;
+
+    const stemH = h * 0.55;
+    const leafW = h * 0.22;
+    const leafH = h * 0.14;
+    const leafTop = h * 0.2;
+
+    unit.innerHTML = `
+      <div style="position:relative;width:${h*0.4}px;height:${h*0.65}px;">
+        <div class="s-leaf-l" style="width:${leafW}px;height:${leafH}px;bottom:${stemH*0.4}px;left:0;animation-delay:${delay+0.5}s;animation-duration:0.6s;"></div>
+        <div class="s-leaf-r" style="width:${leafW}px;height:${leafH}px;bottom:${stemH*0.4}px;right:0;animation-delay:${delay+0.7}s;animation-duration:0.6s;"></div>
+        <div class="s-stem" style="width:3px;height:${stemH}px;position:absolute;bottom:0;left:50%;transform:translateX(-50%);"></div>
+      </div>
+    `;
+    stage.appendChild(unit);
+  });
+
+  for (let i = 0; i < 16; i++) {
+    const drop = document.createElement('div');
+    const left = 5 + Math.random() * 90;
+    const top = 5 + Math.random() * 40;
+    const dd = 60 + Math.random() * 100;
+    const delay = Math.random() * 4;
+    const dur = 1 + Math.random() * 1.2;
+    drop.className = 'water-drop-elem';
+    drop.style.cssText = `left:${left}%;top:${top}%;--dd:${dd}px;animation-delay:${delay}s;animation-duration:${dur}s;`;
+    stage.appendChild(drop);
+
+    const ripple = document.createElement('div');
+    ripple.className = 'land-ripple';
+    ripple.style.cssText = `left:${left}%;top:${top + dd*0.18}%;width:0;height:0;animation-delay:${delay + dur * 0.8}s;animation-duration:0.6s;`;
+    stage.appendChild(ripple);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erozyon Hikayesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="site-wrapper">
+  <header class="site-header">
+  </header>
+
+  <main class="slider theme-intro" aria-live="polite">
+
+    <div class="rain-scene" id="rainScene" style="position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;"></div>
+
+    <section class="slide active" data-index="0" style="position:relative;z-index:2;">
+      <div class="slide-media">
+        <figure class="image-grid image-grid--intro">
+          <div class="image-tile" style="background-image:url('https://www.nrdc.org/sites/default/files/styles/medium_4x3_100/public/media-uploads/48367267401_058a9fe3b2_o_2400.jpg.jpg?h=d399a453&itok=XLuTtaUM');"></div>
+          <div class="image-tile" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/8f/Pimmit_bank_erosion.JPG');"></div>
+          <div class="image-tile" style="background-image:url('https://images.openai.com/thumbnails/url/BdM28Hicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw428w8s9UxJMfINr_AqyPUrL4tydgrOLSuJCC8PDfEsTKksrDQJrLA0D_MLVCu2NTQAACB9Jbw');"></div>
+        </figure>
+      </div>
+      <div class="slide-content">
+        <p class="eyebrow">1 / 5</p>
+        <h2>Erozyon Nedir?</h2>
+        <p>Yağışlarla gelen suyun toprağı parça parça koparıp yüzey sularıyla birlikte başka bölgelere taşımasına <strong>erozyon</strong> denir.</p>
+        <p>Bitki örtüsünün az olduğu, toprağın kuru ve gevşek yapılı olduğu arazilerde bu süreç çok daha hızlı işler; verimli üst tabaka kısa sürede yok olur.</p>
+        <p class="tagline">İzleyen slaytlarda erozyonun doğal nedenlerini, insan etkisini, sonuçlarını ve korunma yollarını göreceksin.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="controls">
+      <a class="arrow-btn arrow-link" href="pages/dogal-nedenler.html" aria-label="Doğal nedenler sayfasına geç">›</a>
+    </div>
+    <p class="footer-text">Yiğit KABAK</p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  const scene = document.getElementById('rainScene');
+  if (!scene) return;
+
+  const sliderRect = { w: window.innerWidth, h: window.innerHeight };
+
+  for (let i = 0; i < 60; i++) {
+    const drop = document.createElement('div');
+    const left = Math.random() * 100;
+    const dur = 0.6 + Math.random() * 0.8;
+    const delay = Math.random() * 3;
+    const h = 12 + Math.random() * 22;
+    drop.style.cssText = `
+      position:absolute;
+      left:${left}%;
+      top:-30px;
+      width:2px;
+      height:${h}px;
+      border-radius:999px;
+      background:linear-gradient(to bottom,transparent,rgba(160,210,255,0.7));
+      animation:rain-fall ${dur}s ${delay}s linear infinite;
+    `;
+    scene.appendChild(drop);
+  }
+
+  for (let i = 0; i < 18; i++) {
+    const splashX = 5 + Math.random() * 90;
+    const splashY = 30 + Math.random() * 60;
+    const delay = Math.random() * 3;
+    const dur = 0.5 + Math.random() * 0.4;
+
+    const splash = document.createElement('div');
+    splash.style.cssText = `
+      position:absolute;
+      left:${splashX}%;
+      top:${splashY}%;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      border:1.5px solid rgba(160,210,255,0.55);
+      animation:splash-expand ${dur}s ${delay}s ease-out infinite;
+    `;
+    scene.appendChild(splash);
+
+    for (let p = 0; p < 5; p++) {
+      const particle = document.createElement('div');
+      const angle = (p / 5) * 360;
+      const dist = 10 + Math.random() * 16;
+      const px = Math.cos(angle * Math.PI / 180) * dist;
+      const py = Math.sin(angle * Math.PI / 180) * dist - 10;
+      particle.style.cssText = `
+        position:absolute;
+        left:${splashX}%;
+        top:${splashY}%;
+        width:${3 + Math.random()*3}px;
+        height:${3 + Math.random()*3}px;
+        border-radius:50%;
+        background:#7a4e28;
+        --px:${px}px;
+        --py:${py}px;
+        animation:particle-scatter ${dur}s ${delay}s ease-out infinite;
+      `;
+      scene.appendChild(particle);
+    }
+  }
+})();
+</script>
+</body>
+</html>
